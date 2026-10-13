@@ -1,0 +1,168 @@
+{
+  "verified_date": "2026-10-13",
+  "version": "0.1.0",
+  "backend": {
+    "temporal": "1.29.1",
+    "postgresql": "16"
+  },
+  "windows": {
+    "python": "3.14.6",
+    "junit": [
+      {
+        "tests": "16",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "41.377"
+      }
+    ],
+    "durability": {
+      "verified_demo": true,
+      "scenarios": [
+        {
+          "scenario": "worker_crash_after_commit",
+          "passed": true,
+          "workflow_id": "acceptance-ab40f9b4-e024-46b9-aafc-830deae55d6a",
+          "worker_replaced": true,
+          "reservation_count": 1,
+          "activity_attempt": 2
+        },
+        {
+          "scenario": "bounded_retry_and_branch_skip",
+          "passed": true,
+          "workflow_id": "acceptance-d6be2e43-c71e-42e9-9fd4-8f72f5b7f667"
+        },
+        {
+          "scenario": "verification_failure_compensates",
+          "passed": true,
+          "workflow_id": "acceptance-79878628-64f4-47f9-b130-b18b4b309e61"
+        },
+        {
+          "scenario": "cancel_after_reservation_compensates",
+          "passed": true,
+          "workflow_id": "acceptance-612b9635-375b-4bd0-a730-fbce73c7d99b"
+        },
+        {
+          "scenario": "unauthorized_then_rejected_approval",
+          "passed": true,
+          "workflow_id": "acceptance-fceca946-9376-4340-8f80-79a5462b98ff"
+        },
+        {
+          "scenario": "durable_scheduled_start",
+          "passed": true,
+          "workflow_id": "acceptance-77487891-2e47-4f84-ac1d-e3e87b758b83"
+        },
+        {
+          "scenario": "retry_exhaustion_no_effect",
+          "passed": true,
+          "workflow_id": "acceptance-655d89c2-2ee3-433f-b103-fe2500627fba"
+        },
+        {
+          "scenario": "approval_timeout_no_effect",
+          "passed": true,
+          "workflow_id": "acceptance-98cf2143-7a6e-4a3b-b48a-532205b7cb4e"
+        }
+      ],
+      "backend": "Temporal + PostgreSQL",
+      "real_worker_process_interruption": true
+    }
+  },
+  "linux": {
+    "python_series": "3.12",
+    "junit": [
+      {
+        "tests": "16",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "36.568"
+      }
+    ],
+    "durability": {
+      "verified_demo": true,
+      "scenarios": [
+        {
+          "scenario": "worker_crash_after_commit",
+          "passed": true,
+          "workflow_id": "acceptance-be8dde45-5a9d-4512-9a85-c4f0b68437bb",
+          "worker_replaced": true,
+          "reservation_count": 1,
+          "activity_attempt": 2
+        },
+        {
+          "scenario": "bounded_retry_and_branch_skip",
+          "passed": true,
+          "workflow_id": "acceptance-8e0e4382-3a3a-43c1-a26c-98f7fa14a38d"
+        },
+        {
+          "scenario": "verification_failure_compensates",
+          "passed": true,
+          "workflow_id": "acceptance-7214228b-dac6-4f00-888e-2d55e4177239"
+        },
+        {
+          "scenario": "cancel_after_reservation_compensates",
+          "passed": true,
+          "workflow_id": "acceptance-20593ef8-3348-45c4-a367-04f17c095b2c"
+        },
+        {
+          "scenario": "unauthorized_then_rejected_approval",
+          "passed": true,
+          "workflow_id": "acceptance-0729855a-1ac9-4905-8ee7-098bb544e265"
+        },
+        {
+          "scenario": "durable_scheduled_start",
+          "passed": true,
+          "workflow_id": "acceptance-42ff010a-cd2a-4107-96d4-b54aad8e0660"
+        },
+        {
+          "scenario": "retry_exhaustion_no_effect",
+          "passed": true,
+          "workflow_id": "acceptance-ceae0e93-c783-49b1-bcf0-479119a0dd2f"
+        },
+        {
+          "scenario": "approval_timeout_no_effect",
+          "passed": true,
+          "workflow_id": "acceptance-747000d5-ffd0-4dd9-8b8b-3a97ef2d6a73"
+        }
+      ],
+      "backend": "Temporal + PostgreSQL",
+      "real_worker_process_interruption": true
+    },
+    "worker_user": "non-root",
+    "source_mount": "read-only"
+  },
+  "checks": {
+    "ruff_lint": "passed",
+    "ruff_format": "passed",
+    "pip_check": "passed",
+    "docker_worker_build": "passed",
+    "readiness_probe": "passed",
+    "installed_cli_help": "passed",
+    "remote_ci": "not run"
+  },
+  "source_sha256": {
+    ".github/workflows/ci.yml": "7d33f89af36bcb7f14ef97fa2854d089a55866d67cbf605c49f9fc4b75016dd1",
+    "docker/init.sql": "03ef7556e204a8bfd83d43b1821a1b25dd75c5f33f36c1e6f6edf33d9e33e065",
+    "docker-compose.yml": "b689bbd6487adba17e830e751305013b6ad3c2ef419810cc63da121f0702056e",
+    "Dockerfile": "181d2935bcdc6e6a4437a62e6611e355b1b7b6b0a43c93c75564f0e1f8284a49",
+    "pyproject.toml": "ec9ab27008ee1147174a49fe6d739b57ca936fd133ce8a3957cf6405a6dc72e7",
+    "requirements.lock": "b4d226e8f51c52162db969a26ad3ba503b99dcfd1ef585fd0bdaf1cab57645f5",
+    "scripts/wait_services.py": "c565457febaa630424a22945d80882a4d0bee44337d8cf9640559d64afcdd87b",
+    "src/workflow_orchestrator/__init__.py": "96c90da4930145248ec4c41672fc5e90ea3e430f412b1b7eea09d7809cfbfb01",
+    "src/workflow_orchestrator/activities.py": "4a877835f46c32afa4a0ebea48a4d5761a05e867687111532f4d23e2056d8f42",
+    "src/workflow_orchestrator/cli.py": "1e420e7505a5a956ccce720d7fbe3dc9469ef5bad2bb56c9e8b4962d43fa5075",
+    "src/workflow_orchestrator/demo.py": "52ea3813124bae8effce0d5902e382f1f992f485e3c05f5c12c0107493a7cf11",
+    "src/workflow_orchestrator/ledger.py": "6365000ba23f627f0be4dee6cf57151b21e924a5ff4e189da0123161bcd1ff31",
+    "src/workflow_orchestrator/policy.py": "aae3ff540861a1e54743cef69ee18c6a4d3d52c121d73057553fbe425625e736",
+    "src/workflow_orchestrator/worker.py": "5af46e621b49edaa3f8ca3d0a3af977dded5dc04e0cca8e4411a12dc614ae921",
+    "src/workflow_orchestrator/workflow.py": "ed7d9ed815ab5f5e61a09a9af36f58320be880a1e60be6c87bcc6dccf08f3d6a",
+    "tests/test_integration.py": "ad33fd845c889778afabebb03f24251de558281254636708878243c6872357f9",
+    "tests/test_policy.py": "24bb399ca3811b55ae777c63bb029a4b17e7342f84650623c60af3fcfa599da8"
+  },
+  "limitations": [
+    "Local Temporal administrative endpoint has no TLS/authentication",
+    "No external API exactly-once claim",
+    "No server/storage-loss recovery test",
+    "No GitHub publication or remote CI"
+  ]
+}

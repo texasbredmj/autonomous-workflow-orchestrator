@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: local-temporal-demo
+    ports: [127.0.0.1:15433:5432]
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/01-app.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U temporal]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  temporal:
+    image: temporalio/auto-setup:1.29.1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_USER: temporal
+      POSTGRES_PWD: local-temporal-demo
+      POSTGRES_SEEDS: postgres
+    ports: [127.0.0.1:17233:7233]
+  worker:
+    profiles: [worker]
+    build: .
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      APP_DB_URL: postgresql://orchestrator:local-orchestrator-demo@postgres:5432/orchestrator
+      ORCHESTRATOR_APPROVAL_KEY: ${ORCHESTRATOR_APPROVAL_KEY:-}
+    depends_on: [temporal]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    tmpfs: [/tmp:size=64m]
+    volumes: [worker-data:/data]
+volumes:
+  postgres-data:
+  worker-data:
