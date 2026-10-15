@@ -1,5 +1,14 @@
 # Autonomous Workflow Orchestrator
 
+## Start Here
+
+[Launch the complete employer demonstration on GitHub](https://github.com/texasbredmj/ai-engineering-portfolio#start-here).
+
+The public portfolio contains this project's runnable employer source, sample fixtures and verified demonstration, plus one Codespaces launch for all eight projects. No separate private-repository access is required. Run `python scripts/project_demo.py 3` from the portfolio Codespace to demonstrate this project.
+
+The instructions below describe this repository's standalone version. The integrated platform and its current verification evidence are maintained in the portfolio.
+
+
 Project 03 of AI Systems Engineering Lab: durable, bounded task coordination with Temporal,
 PostgreSQL, Python, and Docker. Independent of the other portfolio repositories. It coordinates
 a real local inventory ledger rather than relying on agent self-reported completion.
